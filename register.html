@@ -8,13 +8,15 @@
     <title> Gym/Fitness Website</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="css/style.css">
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js">
-    </script>
-    <script type="text/javascript">
-        (function() {
-            emailjs.init("Wr034qUu5A4TDM-84");
-        })();
-    </script>
+        
+         <script>function handleOnSubmit(event) {
+            event.preventDefault(); 
+            alert("The form is submitted. we'll reach you you as soon as we can!");
+        }</script>
+       
+        
+   
+   
 </head>
 
 <body>
@@ -40,7 +42,9 @@
 
         <h1 class="heading">register now</h1>
 
-        <form>
+       
+
+        <form onsubmit="handleOnSubmit(event)">
 
             <div class="inputBox">
                 <input type="text" id="name" placeholder="Name" pattern="[A-Za-z\s]+" required>
@@ -51,60 +55,13 @@
             </div>
 
             <textarea id="message" cols="30" rows="10" placeholder="Your message" required></textarea>
-            <button type="button" class="btn" onclick="validateForm()">Register</button>
-
+           
+            <button type="submit" value="submit" class="btn">Register</button>
+           
+           
         </form>
-
-        <script>
-            function validateForm() {
-                var nameInput = document.getElementById("name");
-                var emailInput = document.getElementById("email");
-                var messageInput = document.getElementById("message");
-                var formValid = true;
-
-                if (!nameInput.checkValidity()) {
-                    formValid = false;
-                    nameInput.reportValidity();
-                }
-
-                if (!emailInput.checkValidity()) {
-                    formValid = false;
-                    emailInput.reportValidity();
-                }
-
-                if (!messageInput.checkValidity()) {
-                    formValid = false;
-                    messageInput.reportValidity();
-                }
-
-                if (formValid) {
-                    sendMail();
-                }
-            }
-
-            function sendMail() {
-                var params = {
-                    name: document.getElementById("name").value,
-                    email: document.getElementById("email").value,
-                    message: document.getElementById("message").value,
-                };
-
-                const serviceID = "service_rjrbklj";
-                const templateID = "template_ooo31vj";
-
-                emailjs.send(serviceID, templateID, params)
-                    .then(res => {
-                        document.getElementById("name").value = "";
-                        document.getElementById("email").value = "";
-                        document.getElementById("message").value = "";
-                        console.log(res);
-                        alert("Your message was sent successfully!!");
-                        window.location.href = window.location.href; // Redirect to the same page
-                    })
-                    .catch(err => console.log(err));
-            }
-        </script>
-
+        <script src="script.js"></script>
+        </section>
 </body>
 
 </html>
