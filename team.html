@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Gym/Fitness Website</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        ul {
+            display: grid;
+            justify-content: center;
+            align-items: center;
+            list-style-type: none;
+            flex-wrap: wrap;
+            gap: 10px;
+            padding: 0;
+        }
+        
+        .member {
+            font-size: 15px;
+            background-color: #de4f61;
+            padding: 10px;
+            border-radius: 20px;
+            text-align: center;
+        }
+    </style>
+
+</head>
+
+<body>
+
+
+    <header class="header">
+
+        <a href="#" class="logo"> <i class="fas fa-dumbbell"></i> fitness</a>
+
+        <nav class="navbar">
+            <a href="index.html" class="active">home</a>
+            <a href="about.html">about</a>
+            <a href="services.html">services</a>
+            <a href="pricing.html">pricing</a>
+            <a href="team.html">team</a>
+            <a href="register.html">register</a>
+        </nav>
+
+        <div id="menu" class="fas fa-bars"></div>
+
+    </header>
+
+    <section class="team" id="team" style="margin-top: 25px;">
+
+        <h1 class="heading">Group team</h1>
+
+        <ul id="group-members">
+            <li class="member">دانا  التيماني</li>
+            <li class="member"> ريماس  الزهراني</li>
+            <li class="member"> شهد العمراني</li>
+
+        </ul>
+
+        <script>
+            // Get the reference to the HTML element
+            var groupMembersElement = document.getElementById("group-members");
+
+            // Shuffle the list items
+            for (var i = groupMembersElement.children.length; i >= 0; i--) {
+                groupMembersElement.appendChild(groupMembersElement.children[Math.random() * i | 0]);
+            }
+        </script>
+
+
+    </section>
+    <script src="js/script.js"></script>
+
+</body>
+
+</html>

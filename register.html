@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Gym/Fitness Website</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js">
+    </script>
+    <script type="text/javascript">
+        (function() {
+            emailjs.init("Wr034qUu5A4TDM-84");
+        })();
+    </script>
+</head>
+
+<body>
+
+
+    <header class="header">
+
+        <a href="#" class="logo"> <i class="fas fa-dumbbell"></i> fitness</a>
+
+        <nav class="navbar">
+            <a href="index.html" class="active">home</a>
+            <a href="about.html">about</a>
+            <a href="services.html">services</a>
+            <a href="pricing.html">pricing</a>
+            <a href="team.html">team</a>
+            <a href="register.html">register</a>
+        </nav>
+
+        <div id="menu" class="fas fa-bars"></div>
+
+    </header>
+    <section class="register" id="register" style="margin-top: 20px;">
+
+        <h1 class="heading">register now</h1>
+
+        <form>
+
+            <div class="inputBox">
+                <input type="text" id="name" placeholder="Name" pattern="[A-Za-z\s]+" required>
+            </div>
+
+            <div class="inputBox">
+                <input type="email" id="email" placeholder="Your email" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" required>
+            </div>
+
+            <textarea id="message" cols="30" rows="10" placeholder="Your message" required></textarea>
+            <button type="button" class="btn" onclick="validateForm()">Register</button>
+
+        </form>
+
+        <script>
+            function validateForm() {
+                var nameInput = document.getElementById("name");
+                var emailInput = document.getElementById("email");
+                var messageInput = document.getElementById("message");
+                var formValid = true;
+
+                if (!nameInput.checkValidity()) {
+                    formValid = false;
+                    nameInput.reportValidity();
+                }
+
+                if (!emailInput.checkValidity()) {
+                    formValid = false;
+                    emailInput.reportValidity();
+                }
+
+                if (!messageInput.checkValidity()) {
+                    formValid = false;
+                    messageInput.reportValidity();
+                }
+
+                if (formValid) {
+                    sendMail();
+                }
+            }
+
+            function sendMail() {
+                var params = {
+                    name: document.getElementById("name").value,
+                    email: document.getElementById("email").value,
+                    message: document.getElementById("message").value,
+                };
+
+                const serviceID = "service_rjrbklj";
+                const templateID = "template_ooo31vj";
+
+                emailjs.send(serviceID, templateID, params)
+                    .then(res => {
+                        document.getElementById("name").value = "";
+                        document.getElementById("email").value = "";
+                        document.getElementById("message").value = "";
+                        console.log(res);
+                        alert("Your message was sent successfully!!");
+                        window.location.href = window.location.href; // Redirect to the same page
+                    })
+                    .catch(err => console.log(err));
+            }
+        </script>
+
+</body>
+
+</html>
+
+</html>
